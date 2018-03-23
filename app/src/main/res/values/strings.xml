@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CryptoAPIFetcher</string>
+    <string name="week">7d:</string>
+    <string name="day">24hr:</string>
+</resources>

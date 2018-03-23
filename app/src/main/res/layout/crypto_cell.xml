@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/coin_iv"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/margin"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/coin_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/coin_iv"
+        android:layout_alignBottom="@id/coin_iv"
+        android:layout_alignTop="@id/coin_iv"
+        tools:text="Coin Name"
+        android:textSize="@dimen/cell_text_size"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/coin_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/coin_name"
+        android:layout_alignBottom="@id/coin_iv"
+        android:layout_alignTop="@id/coin_iv"
+        tools:text="Coin price"
+        android:textStyle="bold"
+        android:textSize="@dimen/cell_text_size"
+        android:gravity="center_vertical|end"/>
+    <View
+        android:id="@+id/divider"
+        android:layout_below="@id/coin_iv"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"
+        />
+
+    <Space
+        android:id="@+id/coin_delta_center_space"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/divider"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/coin_day_delta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:layout_margin="@dimen/margin"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/coin_delta_center_space"
+        tools:text="@string/day"
+        android:textSize="@dimen/cell_text_size"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/coin_week_delta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/margin"
+        android:layout_toEndOf="@id/coin_delta_center_space"
+        android:layout_below="@id/divider"
+        tools:text="@string/week"
+        android:textColor="@color/plus_cyan"
+        android:textAlignment="center"
+        android:textSize="@dimen/cell_text_size" />
+
+
+</RelativeLayout>
