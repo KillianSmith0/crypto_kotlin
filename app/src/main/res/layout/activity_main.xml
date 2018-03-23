@@ -9,6 +9,7 @@
         android:id="@+id/crypto_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/crypto_cell" />
+        tools:listitem="@layout/crypto_cell_constraint"
+        />
 
 </LinearLayout>
