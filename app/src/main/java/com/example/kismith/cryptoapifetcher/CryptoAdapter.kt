@@ -1,25 +1,17 @@
 package com.example.kismith.cryptoapifetcher
 
-import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Typeface
-import android.media.Image
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.RecyclerView
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.kismith.cryptoapifetcher.model.CryptoResponse
 import kotlinx.android.synthetic.main.crypto_cell_constraint.view.*
-import java.lang.reflect.Field
-import java.net.URL
-import android.support.v4.content.res.TypedArrayUtils.getResourceId
 
 
 /**
@@ -64,7 +56,7 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
 //            cryptoItem.symbol
 //            Resources.getSystem().getResourceName(R.string.BTC)
 //            getResource(cryptoItem.symbol)
-            Glide.with(itemView.context).load(getImageUrl(R.string.BTC)).into(itemView.coin_iv)
+//            Glide.with(itemView.context).load(getImageUrl(R.array.coins.)).into(itemView.coin_iv)
 
             itemView.coin_name.text = name
             itemView.coin_price.text = "${cryptoItem.price} $"
@@ -103,7 +95,9 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
         private fun getColor(colorId: Int) = ResourcesCompat.getColor(itemView.resources, colorId, null)
         private fun getImageUrl(coinId: Int): String {
             val coins: Array<String> = itemView.context.resources.getStringArray(R.array.coins) // the urls
+            for( coin in coins ) {
 
+            }
             return itemView.context.getString(coinId)
         }
 
