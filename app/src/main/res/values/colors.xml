@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="minus_red">#FF0000</color>
+    <color name="colorPrimary">#4FC3F7</color>
+    <color name="colorPrimaryDark">#0288D1</color>
+    <color name="colorAccent">#4527A0</color>
+    <color name="minus_red">#F44336</color>
     <color name="plus_cyan">#199696</color>
+    <color name="divider_color">#78909C</color>
+    <color name="text_color">#37474F</color>
 </resources>

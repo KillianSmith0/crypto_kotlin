@@ -5,8 +5,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Created by kismith on 23/03/2018.
+ *
  */
-class RetrofitClient() {
+object RetrofitClient {
     private var retrofit: Retrofit? = null
 
     fun getClient(baseUrl: String): Retrofit? {
@@ -15,7 +16,6 @@ class RetrofitClient() {
                     .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-
         }
         return retrofit
     }
