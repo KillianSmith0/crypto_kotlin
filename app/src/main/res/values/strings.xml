@@ -2,4 +2,10 @@
     <string name="app_name">CryptoAPIFetcher</string>
     <string name="week">7d:</string>
     <string name="day">24hr:</string>
+    <string name="total_market_cap">Total market cap:</string>
+    <string name="total_24hr_volume">Total 24hr volume:</string>
+    <string name="bitcoin_market_cap">Bitcoin percentage of market cap:</string>
+    <string name="active_currencies">Active Currencies:</string>
+    <string name="active_assets">Active Assets:</string>
+    <string name="active_markets">Active Markets:</string>
 </resources>

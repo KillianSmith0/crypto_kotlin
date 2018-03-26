@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/global_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/Base.ThemeOverlay.AppCompat.Light"
+        />
+    </android.support.design.widget.AppBarLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
     <TextView
         android:id="@+id/total_market_cap_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total market cap: "
+        android:text="@string/total_market_cap"
         android:padding="@dimen/global_stats_padding"/>
-    <View
-        android:id="@+id/divider0"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@id/total_day_volume_label"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/divider_color"/>
     <TextView
         android:id="@+id/total_market_cap"
         android:layout_width="wrap_content"
@@ -35,16 +44,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/global_stats_padding"
         android:layout_below="@id/total_market_cap_label"
-        android:text="Total 24hr volume: "/>
-    <View
-        android:id="@+id/divider1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@id/percentage_of_market_cap_label"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/divider_color"/>
+        android:text="@string/total_24hr_volume"/>
     <TextView
         android:id="@+id/total_day_volume"
         android:layout_width="wrap_content"
@@ -62,17 +62,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/total_day_volume_label"
         android:padding="@dimen/global_stats_padding"
-        android:text="Bitcoin % of market cap: "
+        android:text="@string/bitcoin_market_cap"
         />
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@id/active_currencies_label"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/divider_color"/>
     <TextView
         android:id="@+id/percentage_of_market_cap"
         android:layout_width="match_parent"
@@ -90,17 +81,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/percentage_of_market_cap_label"
         android:padding="@dimen/global_stats_padding"
-        android:text="Active Currencies: "
+        android:text="@string/active_currencies"
         />
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@id/active_assets_label"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/divider_color"/>
     <TextView
         android:id="@+id/active_currencies"
         android:layout_width="match_parent"
@@ -118,17 +100,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/active_currencies_label"
         android:padding="@dimen/global_stats_padding"
-        android:text="Active Assets: "
+        android:text="@string/active_assets"
         />
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@id/active_markets"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/divider_color"/>
+
     <TextView
         android:id="@+id/active_assets"
         android:layout_width="match_parent"
@@ -146,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/active_assets_label"
         android:padding="@dimen/global_stats_padding"
-        android:text="Active Markets: "
+        android:text="@string/active_markets"
         />
     <TextView
         android:id="@+id/active_markets"
@@ -159,15 +133,10 @@
         android:padding="@dimen/global_stats_padding"
         tools:text="12345"
         />
-    <View
-        android:id="@+id/divider5"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/active_markets_label"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/divider_color"/>
-
-
-</RelativeLayout>
+    </RelativeLayout>
+    <!--<ListView-->
+    <!--android:id="@+id/stats_list"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content">-->
+    <!--</ListView>-->
+</android.support.design.widget.CoordinatorLayout>

@@ -1,30 +1,39 @@
 package com.example.kismith.cryptoapifetcher
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.RecyclerView
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.kismith.cryptoapifetcher.model.CryptoResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.crypto_cell_constraint.view.*
-import java.io.InputStreamReader
 
 
-/**
- * Created by kismith on 23/03/2018.
- */
+fun getImageUrl(context: Context, symbol: String): String? {
+    val gson = Gson()
+    val images = context.assets.open("coin_images.json").reader().readText()
+    val typeToken = object : TypeToken<Map<String, String>>() {}.type
+    val map = gson.fromJson<Map<String, String>>(images, typeToken)
+
+    return map[symbol]
+}
+
 class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
     private var list: List<CryptoResponse> = ArrayList<CryptoResponse>(0)
 
     fun updateList(items: List<CryptoResponse>?) {
-        if (items == null) else list = items
+        list = items ?: list
         notifyDataSetChanged()
     }
 
@@ -39,9 +48,10 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CryptoViewHolder {
         val view: View = LayoutInflater.from(parent.context)
                 .inflate(R.layout.crypto_cell_constraint, parent, false)
-        return CryptoViewHolder(view)
 
+        return CryptoViewHolder(view)
     }
+
 
     class CryptoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -52,11 +62,8 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
 
             val dayDelta = setDeltaString(cryptoItem.dailyDelta, "24hr: ${cryptoItem.dailyDelta}%")
             val weekDelta = setDeltaString(cryptoItem.weeklyDelta, "7d: ${cryptoItem.weeklyDelta}%")
-            cryptoItem.symbol
-            // get the symbol e.g. BTC
-            // get the url from the string res where name == symbol
 
-            val url = getImageUrl(cryptoItem.symbol)
+            val url = getImageUrl(itemView.context, cryptoItem.symbol)
             if (url != null) {
                 Glide.with(itemView.context).load(url).into(itemView.coin_iv)
             } else {
@@ -66,9 +73,15 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
 
 
             itemView.coin_name.text = name
-            itemView.coin_price.text = "${cryptoItem.price} $"
+            itemView.coin_price.text = "€${cryptoItem.price}"
             itemView.coin_day_delta.text = dayDelta
             itemView.coin_week_delta.text = weekDelta
+
+            itemView.setOnClickListener { v ->
+                // Create a dialog
+                SingleCurrencyActivity.start(cryptoItem, itemView.context)
+
+            }
 
         }
 
@@ -101,13 +114,5 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
 
         private fun getColor(colorId: Int) = ResourcesCompat.getColor(itemView.resources, colorId, null)
 
-        private fun getImageUrl(symbol: String): String? {
-            val gson = Gson()
-            val images = itemView.context.assets.open("coin_images.json").reader().readText()
-            val typeToken = object : TypeToken<Map<String, String>>() {}.type
-            val map = gson.fromJson<Map<String, String>>(images, typeToken)
-
-            return map[symbol]
-        }
     }
 }
