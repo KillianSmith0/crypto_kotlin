@@ -21,3 +21,9 @@ data class CryptoResponse(@SerializedName("id") val id: String? = "",
                      @SerializedName("percent_change_7d") val weeklyDelta: Double = 0.0,
                      @SerializedName("last_updated") val lastUpdated: String? = "")
 
+data class GlobalStatsResponse(@SerializedName("total_market_cap_usd") val totalMarketCap: Int,
+                               @SerializedName("total_24h_volume_usd") val totalDayVolume: Int,
+                               @SerializedName("bitcoin_percentage_of_market_cap") val bitcoinMarketCap: Double,
+                               @SerializedName("active_currencies") val activeCurrencies: Int,
+                               @SerializedName("active_assets") val activeAssets: Int,
+                               @SerializedName("last_updated") val lastUpdated: Long )

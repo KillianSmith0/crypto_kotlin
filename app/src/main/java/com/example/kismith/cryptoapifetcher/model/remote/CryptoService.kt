@@ -1,9 +1,10 @@
 package com.example.kismith.cryptoapifetcher.model.remote
 
 import com.example.kismith.cryptoapifetcher.model.CryptoResponse
+import com.example.kismith.cryptoapifetcher.model.GlobalStatsResponse
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -28,11 +29,11 @@ interface CryptoService {
             : Call<List<CryptoResponse>>
 
 
-    @GET("ticker//")
-    fun getSpecificCurrency(@Query("id") id: String, @Query("convert") convert: String)
+    @GET("ticker/{id}/")
+    fun getSpecificCurrency(@Path("id") id: String, @Query("convert") convert: String)
             :Call<CryptoResponse>
 
     @GET("global/")
-    fun getGlobalStats(@Query("convert") convert: String) : Call<CryptoResponse>
+    fun getGlobalStats(@Query("convert") convert: String = "EUR") : Call<GlobalStatsResponse>
 
 }

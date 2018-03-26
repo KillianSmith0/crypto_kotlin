@@ -11,7 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.kismith.cryptoapifetcher.model.CryptoResponse
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.crypto_cell_constraint.view.*
+import java.io.InputStreamReader
 
 
 /**
@@ -48,15 +51,19 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
             name.setSpan(StyleSpan(Typeface.BOLD), 0, cryptoItem.symbol.length, 0)
 
             val dayDelta = setDeltaString(cryptoItem.dailyDelta, "24hr: ${cryptoItem.dailyDelta}%")
-            val weekDelta = setDeltaString(cryptoItem.weeklyDelta, "7: ${cryptoItem.dailyDelta}%")
-
+            val weekDelta = setDeltaString(cryptoItem.weeklyDelta, "7d: ${cryptoItem.weeklyDelta}%")
+            cryptoItem.symbol
             // get the symbol e.g. BTC
             // get the url from the string res where name == symbol
 
-//            cryptoItem.symbol
-//            Resources.getSystem().getResourceName(R.string.BTC)
-//            getResource(cryptoItem.symbol)
-//            Glide.with(itemView.context).load(getImageUrl(R.array.coins.)).into(itemView.coin_iv)
+            val url = getImageUrl(cryptoItem.symbol)
+            if (url != null) {
+                Glide.with(itemView.context).load(url).into(itemView.coin_iv)
+            } else {
+                Glide.with(itemView.context).clear(itemView.coin_iv)
+                itemView.coin_iv.setImageResource(R.drawable.ic_coin_generic)
+            }
+
 
             itemView.coin_name.text = name
             itemView.coin_price.text = "${cryptoItem.price} $"
@@ -74,7 +81,7 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
             val minus = getColor(R.color.minus_red)
             val default = getColor(R.color.text_color)
 
-            if (delta > 0) color = plus else if (delta < 0) color = minus else color = default
+            color = if (delta > 0) plus else if (delta < 0) minus else default
 
             if (text.contains(value)) {
                 spannable.setSpan(
@@ -93,26 +100,14 @@ class CryptoAdapter() : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
         }
 
         private fun getColor(colorId: Int) = ResourcesCompat.getColor(itemView.resources, colorId, null)
-        private fun getImageUrl(coinId: Int): String {
-            val coins: Array<String> = itemView.context.resources.getStringArray(R.array.coins) // the urls
-            for( coin in coins ) {
 
-            }
-            return itemView.context.getString(coinId)
+        private fun getImageUrl(symbol: String): String? {
+            val gson = Gson()
+            val images = itemView.context.assets.open("coin_images.json").reader().readText()
+            val typeToken = object : TypeToken<Map<String, String>>() {}.type
+            val map = gson.fromJson<Map<String, String>>(images, typeToken)
+
+            return map[symbol]
         }
-
-
-//        private fun getResource(symbol: String): Int {
-//            val coins: Array<String> = itemView.context.resources.getStringArray(R.array.coins) // the urls
-//            val id = itemView.context.resources.getIdentifier(
-//                    symbol,
-//                    "item",
-//                    itemView.context.packageName)
-//
-//            Log.i("getResource id", id.toString())
-//            return id
-//        }
-
     }
-
 }

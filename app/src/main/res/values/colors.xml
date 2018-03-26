@@ -5,6 +5,6 @@
     <color name="colorAccent">#4527A0</color>
     <color name="minus_red">#F44336</color>
     <color name="plus_cyan">#199696</color>
-    <color name="divider_color">#78909C</color>
+    <color name="divider_color">#3378909C</color>
     <color name="text_color">#37474F</color>
 </resources>

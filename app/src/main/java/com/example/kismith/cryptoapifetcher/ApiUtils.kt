@@ -12,8 +12,8 @@ import com.example.kismith.cryptoapifetcher.model.remote.RetrofitClient
  */
 object ApiUtils {
 
-    public val BASE_URL: String = "https://api.coinmarketcap.com/v1/"
+    val BASE_URL: String = "https://api.coinmarketcap.com/v1/"
 
-    public val cryptoService = RetrofitClient.getClient(BASE_URL)?.create(CryptoService::class.java)
+    val cryptoService: CryptoService = RetrofitClient.getClient(BASE_URL).create(CryptoService::class.java)
 
 }

@@ -2,4 +2,5 @@
 <resources>
     <dimen name="cell_margin">8dp</dimen>
     <dimen name="cell_text_size">16sp</dimen>
+    <dimen name="global_stats_padding">16dp</dimen>
 </resources>

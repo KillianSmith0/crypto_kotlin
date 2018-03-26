@@ -6,6 +6,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.example.kismith.cryptoapifetcher.model.CryptoResponse
+import com.example.kismith.cryptoapifetcher.model.GlobalStatsResponse
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,13 +26,14 @@ class MainActivity : AppCompatActivity() {
         crypto_rv.setHasFixedSize(true)
         crypto_rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         loadCurrencies()
+//        loadGlobalStats()
 //        val cryptoItem = CryptoItem("bitcoin", "Bitcoin", "BTC", "1", "100.00")
 //        Log.i("CryptoApp", cryptoItem.getDoubleFrom(cryptoItem.price).toString())
 //        Log.i("CryptoApp", cryptoItem.getDoubleFrom(cryptoItem.name).toString())
     }
 
     private fun loadCurrencies(){
-        cryptoService?.getCurrencies()?.enqueue(object : Callback<List<CryptoResponse>> {
+        cryptoService.getCurrencies().enqueue(object : Callback<List<CryptoResponse>> {
             override fun onResponse(call: Call<List<CryptoResponse>>?, response: Response<List<CryptoResponse>>?) {
 
                 if(response?.isSuccessful!!){
@@ -52,13 +54,13 @@ class MainActivity : AppCompatActivity() {
         })
     }
     private fun loadGlobalStats() {
-        cryptoService?.getGlobalStats("EUR")?.enqueue(object: Callback<CryptoResponse> {
-            override fun onFailure(call: Call<CryptoResponse>?, t: Throwable?) {
-                Log.i("GlobalStats", "SUCCESS")
+        cryptoService.getGlobalStats("EUR").enqueue(object: Callback<GlobalStatsResponse> {
+            override fun onResponse(call: Call<GlobalStatsResponse>?, response: Response<GlobalStatsResponse>?) {
+                Log.i("GlobalStats", "Success")
             }
 
-            override fun onResponse(call: Call<CryptoResponse>?, response: Response<CryptoResponse>?) {
-                Log.i("GlobalStats", "FAILURE")
+            override fun onFailure(call: Call<GlobalStatsResponse>?, t: Throwable?) {
+                Log.i("GlobalStats", "Failure")
             }
         })
     }
