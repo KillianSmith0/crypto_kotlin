@@ -1,4 +1,4 @@
-package com.example.kismith.cryptoapifetcher
+package com.example.kismith.cryptoapifetcher.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.example.kismith.cryptoapifetcher.ApiUtils
+import com.example.kismith.cryptoapifetcher.CryptoAdapter
+import com.example.kismith.cryptoapifetcher.R
 import com.example.kismith.cryptoapifetcher.model.CryptoResponse
-import com.example.kismith.cryptoapifetcher.model.GlobalStatsResponse
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback

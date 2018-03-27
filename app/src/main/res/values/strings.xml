@@ -8,4 +8,5 @@
     <string name="active_currencies">Active Currencies:</string>
     <string name="active_assets">Active Assets:</string>
     <string name="active_markets">Active Markets:</string>
+    <string name="image_view_description">Cryptocoin logo</string>
 </resources>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.kismith.cryptoapifetcher.MainActivity">
+    tools:context="com.example.kismith.cryptoapifetcher.ui.MainActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/crypto_toolbar"
         android:layout_width="match_parent"

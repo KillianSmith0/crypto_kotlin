@@ -1,4 +1,4 @@
-package com.example.kismith.cryptoapifetcher.model.remote
+package com.example.kismith.cryptoapifetcher.remote
 
 import com.example.kismith.cryptoapifetcher.model.CryptoResponse
 import com.example.kismith.cryptoapifetcher.model.GlobalStatsResponse

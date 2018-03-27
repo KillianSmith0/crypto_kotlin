@@ -1,8 +1,10 @@
-package com.example.kismith.cryptoapifetcher
+package com.example.kismith.cryptoapifetcher.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.example.kismith.cryptoapifetcher.ApiUtils
+import com.example.kismith.cryptoapifetcher.R
 import com.example.kismith.cryptoapifetcher.model.GlobalStatsResponse
 import kotlinx.android.synthetic.main.global_stats_view.*
 import retrofit2.Call

@@ -1,7 +1,7 @@
 package com.example.kismith.cryptoapifetcher
 
-import com.example.kismith.cryptoapifetcher.model.remote.CryptoService
-import com.example.kismith.cryptoapifetcher.model.remote.RetrofitClient
+import com.example.kismith.cryptoapifetcher.remote.CryptoService
+import com.example.kismith.cryptoapifetcher.remote.RetrofitClient
 
 
 /**

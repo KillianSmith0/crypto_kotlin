@@ -1,4 +1,4 @@
-package com.example.kismith.cryptoapifetcher.model.remote
+package com.example.kismith.cryptoapifetcher.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

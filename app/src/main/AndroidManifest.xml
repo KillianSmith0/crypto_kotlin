@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,17 +19,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GlobalStatsActivity"
+            android:name=".ui.GlobalStatsActivity"
             android:label="Global Statistics"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".ui.MainActivity">
 
             <!-- To support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".ui.MainActivity" />
         </activity>
-        <activity android:name=".SingleCurrencyActivity"
+        <activity android:name=".ui.SingleCurrencyActivity"
             android:theme="@style/AppTheme.Dialog"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
