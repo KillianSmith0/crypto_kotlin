@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/global_action"
         android:title="Global"
-        android:icon="@drawable/ic_info"
+        android:icon="@drawable/ic_global"
         app:showAsAction="ifRoom"/>
+    <item android:id="@+id/zendesk_action"
+        android:title="Zendesk Support"
+        android:icon="@drawable/ic_info"
+        app:showAsAction="always"/>
 </menu>

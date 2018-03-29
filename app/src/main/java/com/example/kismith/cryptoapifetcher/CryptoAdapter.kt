@@ -40,12 +40,13 @@ class CryptoAdapter : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
 
         fun bindCryptoItem(cryptoItem: CryptoResponse) {
             val ctx = itemView.context
+            val symbol = cryptoItem.symbol
 
-            val name = "${cryptoItem.symbol} | ${cryptoItem.name}".setStyleToSubstring(cryptoItem.symbol, listOf(StyleSpan(Typeface.BOLD)))
-            val dayDelta = "24hr: ${cryptoItem.dailyDelta}%".setDeltaString(ctx, cryptoItem.dailyDelta)
-            val weekDelta = "7d: ${cryptoItem.weeklyDelta}%".setDeltaString(ctx, cryptoItem.weeklyDelta)
+            val name = "$symbol | ${cryptoItem.name}".setStyleToSubstring(symbol, listOf(StyleSpan(Typeface.BOLD)))
+            val dayDelta = setDeltaString(ctx, R.string.day_delta, cryptoItem.dailyDelta)
+            val weekDelta = setDeltaString(ctx, R.string.week_delta, cryptoItem.weeklyDelta)
 
-            val url = getImageUrl(ctx, cryptoItem.symbol)
+            val url = getImageUrl(ctx, symbol)
             if (url != null) {
                 Glide.with(ctx).load(url).into(itemView.coin_iv)
             } else {
@@ -54,12 +55,11 @@ class CryptoAdapter : RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder>() {
             }
 
             itemView.coin_name.text = name
-            itemView.coin_price.text = "€${cryptoItem.price}"
+            itemView.coin_price.text = ctx.getString(R.string.price_eur, cryptoItem.price)
             itemView.coin_day_delta.text = dayDelta
             itemView.coin_week_delta.text = weekDelta
 
             itemView.setOnClickListener { _ ->
-                // Create a dialog
                 SingleCurrencyActivity.start(cryptoItem, ctx)
             }
         }

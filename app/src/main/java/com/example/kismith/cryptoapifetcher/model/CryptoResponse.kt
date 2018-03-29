@@ -1,8 +1,7 @@
 package com.example.kismith.cryptoapifetcher.model
 
-import android.util.Log
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
+import java.io.Serializable     // used to easily send the data through an Intent
 
 /**
  * Created by kismith on 23/03/2018.

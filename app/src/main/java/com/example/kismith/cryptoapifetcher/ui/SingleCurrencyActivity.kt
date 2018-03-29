@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.currency_window.*
 class SingleCurrencyActivity : AppCompatActivity() {
 
     companion object {
-        private val cryptoItemKey = "cryptoCurrency"
+        private const val cryptoItemKey = "cryptoCurrency"
 
         fun start(cryptoItem: CryptoResponse, context: Context) {
             val currencyIntent = Intent(context, SingleCurrencyActivity::class.java)
@@ -43,17 +43,17 @@ class SingleCurrencyActivity : AppCompatActivity() {
 
         val styles = listOf(StyleSpan(Typeface.BOLD))
 
-        coin_title.text = "${cryptoItem.symbol} | ${cryptoItem.name}".setStyleToSubstring(cryptoItem.symbol, styles)
-        rank.text = "Rank: #${cryptoItem.rank}".setStyleToSubstring("${cryptoItem.rank}", styles)
+        coin_title.text = (cryptoItem.symbol + " | " + cryptoItem.name).setStyleToSubstring(cryptoItem.symbol, styles)
+        rank.text = getString(R.string.rank, cryptoItem.rank).setStyleToSubstring("${cryptoItem.rank}", styles)
 
-        price_currency.text = "Price: €%.2f".format(cryptoItem.price)
-        price_btc.text = "To Bitcoin ratio: %.2f".format(cryptoItem.priceBTC)
-        market_cap_usd.text = "Market cap: %.2f".format(cryptoItem.marketCapUSD)
-        percent_change_1hr.text = "Delta (last hour): ${cryptoItem.hourlyDelta}%".setDeltaString(this,cryptoItem.hourlyDelta)
-        percent_change_24h.text = "Delta (last day): ${cryptoItem.dailyDelta}%".setDeltaString(this, cryptoItem.dailyDelta)
-        percent_change_7d.text = "Delta (last week): ${cryptoItem.weeklyDelta}%".setDeltaString(this, cryptoItem.weeklyDelta)
+        price_currency.text = getString(R.string.price, cryptoItem.price)
+        price_btc.text = getString(R.string.bitcoin_ratio, cryptoItem.priceBTC)
+        market_cap_usd.text = getString(R.string.market_cap, cryptoItem.marketCapUSD)
+        percent_change_1hr.text = setDeltaString(this, "Delta (last hour): ${cryptoItem.hourlyDelta}%", cryptoItem.hourlyDelta)
+        percent_change_24h.text = setDeltaString(this,"Delta (last day): ${cryptoItem.dailyDelta}%", cryptoItem.dailyDelta)
+        percent_change_7d.text = setDeltaString(this,"Delta (last week): ${cryptoItem.weeklyDelta}%", cryptoItem.weeklyDelta)
 
-        button_yes.setOnClickListener { v ->
+        button_yes.setOnClickListener { _ ->
             this.finish()
         }
     }

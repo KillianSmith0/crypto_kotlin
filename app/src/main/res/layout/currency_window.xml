@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:padding="32dp"
     tools:layout_editor_absoluteY="25dp">
 
@@ -131,14 +131,13 @@
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/roboto_slab"
         android:text="@android:string/ok"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/percent_change_7d"
-        app:layout_constraintVertical_bias="0.428"
-        app:layout_goneMarginBottom="8dp" />
+        />
 
 </android.support.constraint.ConstraintLayout>

@@ -14,7 +14,7 @@ import retrofit2.http.Query
  */
 interface CryptoService {
 
-    /** Parameters of theinterface methods can have the following annotations:
+    /** Parameters of the interface methods can have the following annotations:
      * @Path - variable substitution for the API endpoint
      * @Query - specifies the query key name with the value of the annotated param
      * @Body - payload for the POST call
@@ -28,12 +28,18 @@ interface CryptoService {
                    @Query("convert") convert: String = "EUR")
             : Call<List<CryptoResponse>>
 
-
-    @GET("ticker/{id}/")
-    fun getSpecificCurrency(@Path("id") id: String, @Query("convert") convert: String)
-            :Call<CryptoResponse>
+    /**
+     * Not needed as all currencies are retrieved on app loaded, so take specific currency from list
+     * */
+//    @GET("ticker/{id}/")
+//    fun getSpecificCurrency(@Path("id") id: String, @Query("convert") convert: String)
+//            :Call<CryptoResponse>
 
     @GET("global/")
     fun getGlobalStats(@Query("convert") convert: String = "EUR") : Call<GlobalStatsResponse>
+
+}
+
+enum class Currencies {
 
 }
